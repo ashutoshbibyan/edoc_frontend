@@ -1,0 +1,31 @@
+<mat-grid-list cols="1" rowHeight='1:1'>
+
+  <mat-grid-tile>
+
+    <mat-drawer-container class="example-container" autosize>
+      <mat-drawer #drawer class="example-sidenav" mode="side">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let page of pageList" >
+
+           <a [routerLink]="page.url" >{{page.title}}</a>
+
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-drawer>
+
+      <mat-toolbar>
+        <span>My Application</span>
+        <span class="example-spacer"></span>
+        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+      </mat-toolbar>
+
+      <router-outlet></router-outlet>
+
+
+    </mat-drawer-container>
+  </mat-grid-tile>
+
+</mat-grid-list>
