@@ -1,1 +1,42 @@
-<p>signin works!</p>
+
+ <mat-grid-list cols="1"  rowHeight="500px">
+
+    <mat-grid-tile>
+
+      <mat-card>
+
+
+        <mat-card-title>SignIn</mat-card-title>
+
+          <mat-card-content>
+
+            <form [formGroup]="signInFormGroup" (submit)="onSubmit()">
+              <mat-form-field appearance="outline">
+
+                <mat-label>UserName</mat-label>
+                <input matInput type="text"  data-test="input-username" placeholder="UserName" formControlName="userName">
+                <mat-error *ngIf="signInFormGroup.controls['userName'].invalid" data-test="mat-error-username">{{getUserNameError()}}</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password"  data-test="input-password" placeholder="Password" formControlName="password">
+                <mat-error data-test="mat-error-password" *ngIf="signInFormGroup.controls['password'].invalid">{{getPasswordError()}}</mat-error>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button color="primary" type="submit" data-test="btn-submit">Submit</button>
+
+              </form>
+
+          </mat-card-content>
+
+
+      </mat-card>
+
+    </mat-grid-tile>
+
+ </mat-grid-list>
+
+
+
+

@@ -13,6 +13,12 @@ import {MatIconModule} from "@angular/material/icon";
 import { HomeComponent } from './home/home.component';
 import {MatListModule} from '@angular/material/list';
 import { SigninComponent } from './signin/signin.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -21,7 +27,8 @@ import { SigninComponent } from './signin/signin.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SigninComponent
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +39,11 @@ import { SigninComponent } from './signin/signin.component';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
