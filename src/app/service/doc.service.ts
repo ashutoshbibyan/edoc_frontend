@@ -1,3 +1,4 @@
+import { DocSignUpForm } from './../formdata/doc.signup.form';
 import { UserSignInFormData } from './../formdata/user.signin.form';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +9,11 @@ export class DocService {
 
   constructor() { }
 
-  userSignIn(formData: UserSignInFormData){
+  userSignIn(userSignInForm: UserSignInFormData){
+
+  }
+
+  signUp(docSignUpForm: DocSignUpForm){
 
   }
 }

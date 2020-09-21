@@ -19,6 +19,7 @@ import {MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { SignupComponent } from './signup/signup.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -44,6 +45,7 @@ import { SignupComponent } from './signup/signup.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatStepperModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

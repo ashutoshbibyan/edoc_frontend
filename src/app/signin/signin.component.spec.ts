@@ -7,7 +7,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 
 
-fdescribe('SigninComponent', () => {
+describe('SigninComponent', () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
 

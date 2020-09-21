@@ -9,7 +9,8 @@ import {Page} from "../models/page";
 export class HomeComponent implements OnInit {
 
   pageList: Page[] = [
-    {url:'' , title:"Sign in"}
+    {url:'' , title:"Sign in"},
+    {url:'/signup' , title:'SignUp'}
   ];
 
   constructor() { }

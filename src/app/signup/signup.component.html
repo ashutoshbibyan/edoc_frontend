@@ -1,0 +1,72 @@
+
+
+    <mat-card>
+
+      <mat-card-title>SignUp</mat-card-title>
+
+      <mat-card-content>
+
+
+      <mat-horizontal-stepper linear="true">
+
+        <mat-step [stepControl]="stepOneFormGroup">
+
+          <ng-template matStepLabel>Enter Phone No</ng-template>
+
+          <form [formGroup]="stepOneFormGroup">
+
+            <mat-form-field appearance="outline">
+              <mat-label>PhoneNo</mat-label>
+              <input matInput data-test="input-phoneno" type="text" formControlName="phoneNo">
+              <mat-error data-test="err-phoneno" *ngIf="stepOneFormGroup.controls['phoneNo'].invalid" >{{getPhoneNoError()}}</mat-error>
+
+
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput data-test="input-password" type="password" formControlName="password">
+              <mat-error data-test="err-password" *ngIf="stepOneFormGroup.controls['password'].invalid">{{getPasswordError()}}</mat-error>
+            </mat-form-field>
+            <br>
+            <button mat-button color="primary" matStepperNext data-test="btn-nxt-step-one" (click)="goToStepTwo()">Send Otp</button>
+
+          </form>
+
+        </mat-step>
+
+        <mat-step [stepControl]="stepTwoFormGroup">
+
+          <ng-template matStepLabel>Verification and Done</ng-template>
+
+          <form [formGroup]="stepTwoFormGroup">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Otp</mat-label>
+              <input matInput data-test="input-otp" type="text" formControlName="otp">
+              <mat-error *ngIf="stepTwoFormGroup.controls['otp'].invalid" data-test="err-otp">{{getOtpError()}}</mat-error>
+
+
+            </mat-form-field>
+            <br>
+            <button mat-button data-test="btn-send-opt-again" [disabled]="deactivated" (click)="sendOtpAgain()">{{countDown | async}}</button>
+            <button mat-button data-test="bnt-send-otp-call"  [disabled]="deactivatedCall" (click) ="sendOtpCall()">{{countDownVoice | async }}</button>
+
+
+
+          </form>
+
+
+          <button mat-button color="warn" matStepperPrevious data-test="btn-prev"> Previous </button>
+          <button mat-raised-button color="primary" data-test='btn-submit' (click)="onSubmit()">Submit</button>
+
+
+
+        </mat-step>
+
+      </mat-horizontal-stepper>
+
+
+      </mat-card-content>
+    </mat-card>
+
