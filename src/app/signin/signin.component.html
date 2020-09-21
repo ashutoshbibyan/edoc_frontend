@@ -11,13 +11,13 @@
             <form [formGroup]="signInFormGroup" (submit)="onSubmit()">
               <mat-form-field appearance="outline">
 
-                <mat-label>UserName</mat-label>
-                <input matInput type="text"  data-test="input-username" placeholder="UserName" formControlName="userName">
-                <mat-error *ngIf="signInFormGroup.controls['userName'].invalid" data-test="mat-error-username">{{getUserNameError()}}</mat-error>
+                <mat-label data-test='label-phoneno'>PhoneNo</mat-label>
+                <input matInput type="text"  data-test="input-phoneno" placeholder="UserName" formControlName="phoneNo">
+                <mat-error *ngIf="signInFormGroup.controls['phoneNo'].invalid" data-test="mat-error-phoneno">{{getPhoneNoError()}}</mat-error>
               </mat-form-field>
               <br>
               <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
+                <mat-label data-test="label-password">Password</mat-label>
                 <input matInput type="password"  data-test="input-password" placeholder="Password" formControlName="password">
                 <mat-error data-test="mat-error-password" *ngIf="signInFormGroup.controls['password'].invalid">{{getPasswordError()}}</mat-error>
               </mat-form-field>

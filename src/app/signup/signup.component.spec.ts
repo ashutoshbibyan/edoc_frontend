@@ -6,7 +6,7 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { SignupComponent } from './signup.component';
 import { DocService } from '../service/doc.service';
 
-fdescribe('SignupComponent', () => {
+describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
   let otpServiceMock: jasmine.SpyObj<OtpService>;
@@ -15,16 +15,20 @@ fdescribe('SignupComponent', () => {
   /** list of dom elements starts  */
 
   let inputPhoneNo: HTMLInputElement ;
-  let errPhoneNo: any;
+  let errPhoneNo: HTMLElement;
   let inputPassword: HTMLInputElement ;
-  let errPassword: any ;
+  let errPassword: HTMLElement ;
   let btnNxtStepOne: HTMLButtonElement ;
   let inputOtp: HTMLInputElement;
-  let errOtp: any ;
+  let errOtp: HTMLElement ;
   let btnSendOtpAgain: HTMLButtonElement;
   let btnSendOtpCall: HTMLButtonElement;
   let btnPrevious: HTMLButtonElement ;
   let btnSubmit: HTMLButtonElement ;
+
+  let labelPhoneNo: HTMLElement;
+  let labelPassword: HTMLElement
+  let labelOtp: HTMLElement;
 
 
 
@@ -97,6 +101,10 @@ fdescribe('SignupComponent', () => {
 
       btnSubmit = el('[data-test="btn-submit"]');
 
+      labelPhoneNo = el('[data-test="label-phoneno"]');
+      labelPassword = el('[data-test="label-password"]');
+      labelOtp = el('[data-test="label-otp"]');
+
       phoneNoControl = component.stepOneFormGroup.controls['phoneNo'];
       passwordControl = component.stepOneFormGroup.controls['password'];
 
@@ -111,7 +119,27 @@ fdescribe('SignupComponent', () => {
         expect(btnNxtStepOne).toBeTruthy();
         expect(inputPhoneNo.type).toEqual("text");
         expect(inputPassword.type).toEqual("password");
+        expect(labelPhoneNo).toBeTruthy();
+        expect(labelPassword).toBeTruthy();
+        expect(labelOtp).toBeTruthy();
       });
+
+      it('should have value in the phone no label ' , () => {
+
+        expect(labelPhoneNo.innerText).toEqual("PhoneNo");
+      });
+
+      it('should have value in the pasword label ' , () => {
+
+        expect(labelPassword.innerText).toEqual("Password");
+      });
+
+      it('should have value in the otp label ' , () => {
+
+        expect(labelOtp.innerText).toEqual("Otp");
+      });
+
+
 
 
       it('should have value of the input fields in the formgroup ' , () => {
@@ -137,7 +165,7 @@ fdescribe('SignupComponent', () => {
 
         expect(phoneNoControl.valid).toEqual(false);
         expect(errPhoneNo).toBeTruthy();
-        expect(component.getPhoneNoError()).toEqual("Please Enter Phone No");
+        expect(errPhoneNo.innerText).toEqual("Please Enter Phone No");
       });
 
       it('phone no can not be just empty spaced ' , () => {
@@ -148,7 +176,7 @@ fdescribe('SignupComponent', () => {
 
         expect(phoneNoControl.valid).toEqual(false);
         expect(errPhoneNo).toBeTruthy();
-        expect(component.getPhoneNoError()).toEqual("Please Enter Phone No");
+        expect(errPhoneNo.innerText).toEqual("Please Enter Phone No");
 
       });
 
@@ -161,7 +189,7 @@ fdescribe('SignupComponent', () => {
 
         expect(phoneNoControl.valid).toEqual(false);
         expect(errPhoneNo).toBeTruthy();
-        expect(component.getPhoneNoError()).toEqual('Invalid Phone No (ex - 4567893219 )');
+        expect(errPhoneNo.innerText).toEqual('Invalid Phone No (ex - 4567893219 )');
 
       });
 
@@ -174,7 +202,7 @@ fdescribe('SignupComponent', () => {
 
         expect(phoneNoControl.valid).toEqual(false);
         expect(errPhoneNo).toBeTruthy();
-        expect(component.getPhoneNoError()).toEqual('Invalid Phone No (ex - 4567893219 )');
+        expect(errPhoneNo.innerText).toEqual('Invalid Phone No (ex - 4567893219 )');
 
       });
 
@@ -187,7 +215,7 @@ fdescribe('SignupComponent', () => {
 
         expect(phoneNoControl.valid).toEqual(false);
         expect(errPhoneNo).toBeTruthy();
-        expect(component.getPhoneNoError()).toEqual('Invalid Phone No (ex - 4567893219 )');
+        expect(errPhoneNo.innerText).toEqual('Invalid Phone No (ex - 4567893219 )');
 
       });
 
@@ -200,7 +228,7 @@ fdescribe('SignupComponent', () => {
 
         expect(phoneNoControl.valid).toEqual(false);
         expect(errPhoneNo).toBeTruthy();
-        expect(component.getPhoneNoError()).toEqual('Invalid Phone No (ex - 4567893219 )');
+        expect(errPhoneNo.innerText).toEqual('Invalid Phone No (ex - 4567893219 )');
 
       });
 
@@ -222,7 +250,7 @@ fdescribe('SignupComponent', () => {
 
         expect(passwordControl.valid).toEqual(false);
         expect(errPassword).toBeTruthy();
-        expect(component.getPasswordError()).toEqual("Password Can't Be Empty ");
+        expect(errPassword.innerText).toEqual("Password Can't Be Empty");
 
       });
 
@@ -233,6 +261,8 @@ fdescribe('SignupComponent', () => {
         fixture.detectChanges();
 
         expect(passwordControl.valid).toEqual(false);
+        expect(errPassword).toBeTruthy();
+        expect(errPassword.innerText).toEqual("Password Can't Be Empty");
       });
 
       it('password should not have space in it ' , () => {
@@ -243,7 +273,7 @@ fdescribe('SignupComponent', () => {
 
         expect(passwordControl.valid).toEqual(false);
         expect(errPassword).toBeTruthy();
-        expect(component.getPasswordError()).toEqual(`Password can't have space in it`);
+        expect(errPassword.innerText).toEqual(`Password can't have space in it`);
       });
 
 
@@ -298,7 +328,7 @@ fdescribe('SignupComponent', () => {
 
          expect(otpControl.valid).toEqual(false);
          expect(errOtp).toBeTruthy();
-         expect(component.getOtpError()).toEqual('Please Enter Otp');
+         expect(errOtp.innerText).toEqual('Please Enter Otp');
 
       });
 
@@ -311,7 +341,7 @@ fdescribe('SignupComponent', () => {
 
         expect(otpControl.valid).toEqual(false);
         expect(errOtp).toBeTruthy();
-        expect(component.getOtpError()).toEqual('Please Enter Otp');
+        expect(errOtp.innerText).toEqual('Please Enter Otp');
       });
 
       it('otp should not have any space in between ' , () => {
@@ -322,7 +352,7 @@ fdescribe('SignupComponent', () => {
 
         expect(otpControl.valid).toEqual(false);
         expect(errOtp).toBeTruthy();
-        expect(component.getOtpError()).toEqual(`Can't have Space In Otp`);
+        expect(errOtp.innerText).toEqual(`Can't have Space In Otp`);
       });
 
       it('otp should not have any alphabets and symbols in between ' , () => {
@@ -333,7 +363,7 @@ fdescribe('SignupComponent', () => {
 
         expect(otpControl.valid).toEqual(false);
         expect(errOtp).toBeTruthy();
-        expect(component.getOtpError()).toEqual(`Can't have Character or Symbol In Otp`);
+        expect(errOtp.innerText).toEqual(`Can't have Character or Symbol In Otp`);
       });
 
       it('otp should be of length of 4 digit ' , () => {
@@ -345,7 +375,7 @@ fdescribe('SignupComponent', () => {
 
         expect(otpControl.valid).toEqual(false);
         expect(errOtp).toBeTruthy();
-        expect(component.getOtpError()).toEqual(`length should be 4 numbers`);
+        expect(errOtp.innerText).toEqual(`length should be 4 numbers`);
 
       });
 

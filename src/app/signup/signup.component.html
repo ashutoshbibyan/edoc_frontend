@@ -16,7 +16,7 @@
           <form [formGroup]="stepOneFormGroup">
 
             <mat-form-field appearance="outline">
-              <mat-label>PhoneNo</mat-label>
+              <mat-label data-test="label-phoneno">PhoneNo</mat-label>
               <input matInput data-test="input-phoneno" type="text" formControlName="phoneNo">
               <mat-error data-test="err-phoneno" *ngIf="stepOneFormGroup.controls['phoneNo'].invalid" >{{getPhoneNoError()}}</mat-error>
 
@@ -24,7 +24,7 @@
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
+              <mat-label data-test='label-password'>Password</mat-label>
               <input matInput data-test="input-password" type="password" formControlName="password">
               <mat-error data-test="err-password" *ngIf="stepOneFormGroup.controls['password'].invalid">{{getPasswordError()}}</mat-error>
             </mat-form-field>
@@ -42,7 +42,7 @@
           <form [formGroup]="stepTwoFormGroup">
 
             <mat-form-field appearance="outline">
-              <mat-label>Otp</mat-label>
+              <mat-label data-test='label-otp'>Otp</mat-label>
               <input matInput data-test="input-otp" type="text" formControlName="otp">
               <mat-error *ngIf="stepTwoFormGroup.controls['otp'].invalid" data-test="err-otp">{{getOtpError()}}</mat-error>
 

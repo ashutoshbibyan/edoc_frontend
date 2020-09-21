@@ -1,5 +1,5 @@
 export interface UserSignInFormData {
 
-  userName:string;
+  phoneNo:string;
   password:string;
 }

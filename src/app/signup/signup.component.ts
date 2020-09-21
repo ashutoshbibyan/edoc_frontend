@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
     if(phoneNoControl.hasError('Not Empty')){
       return 'Please Enter Phone No';
     }
-    else if(phoneNoControl.hasError('PhoneNo Invalid')){
+    else if(phoneNoControl.hasError('Invalid PhoneNo')){
       return "Invalid Phone No (ex - 4567893219 )";
     }
 
@@ -67,7 +67,7 @@ export class SignupComponent implements OnInit {
     let passwordControl = this.stepOneFormGroup.controls['password'];
 
     if(passwordControl.hasError('Not Empty')){
-      return "Password Can't Be Empty ";
+      return "Password Can't Be Empty";
     }
     else if (passwordControl.hasError('Invalid Password')){
       return `Password can't have space in it`;
